@@ -1,0 +1,31 @@
+package tcp_iface
+
+import "net"
+
+/**
+定义链接接口
+*/
+
+type IConnection interface {
+	// Start 启动链接，当前链接开始工作
+	Start()
+	// Stop 停止链接，结束当前链接状态
+	Stop()
+	// GetTCPConnection 从当前链接获取原始的socket TCPConn
+	GetTCPConnection() *net.TCPConn
+	// GetConnID 获取当前链接ID
+	GetConnID() uint32
+	// RemoteAddr 获取远程客户端地址信息
+	RemoteAddr() net.Addr
+	// SendMsg 直接将Message数据发送给远程TCP客户端
+	SendMsg(msgId uint32, data []byte) error
+	// SendBuffMsg 添加带缓冲发送消息接口
+	SendBuffMsg(msgId uint32, data []byte) error
+
+	// SetProperty 设置链接属性
+	SetProperty(key string, value interface{})
+	// GetProperty 获取链接属性
+	GetProperty(key string) (interface{}, error)
+	// RemoveProperty 移除链接属性
+	RemoveProperty(key string)
+}

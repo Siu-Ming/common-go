@@ -1,0 +1,23 @@
+package tcp_iface
+
+type IServer interface {
+	// Start 启动
+	Start()
+	// Stop 停止
+	Stop()
+	// Serve 运行
+	Serve()
+	// AddRouter 路由功能：给当前服务注册一个路由业务方法，供客户端链接处理使用
+	AddRouter(msgId uint32, router IRouter)
+	// GetConnMgr 得到链接管理
+	GetConnMgr() IConnectionManager
+
+	// SetOnConnStart 设置该Server的连接创建时Hook函数
+	SetOnConnStart(func(connection IConnection))
+	// SetOnConnStop 设置该Server的连接断开时的Hook函数
+	SetOnConnStop(func(connection IConnection))
+	// CallOnConStart 调用连接OnConnStart Hook函数
+	CallOnConStart(connection IConnection)
+	// CallOnConnStop 调用连接OnConnStop Hook函数
+	CallOnConnStop(connection IConnection)
+}
