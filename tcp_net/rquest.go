@@ -1,6 +1,6 @@
 package tcp_net
 
-import "TCP-framework_V1.0/tcp_iface"
+import "github.com/Siu-Ming/common-go/tcp_iface"
 
 type Request struct {
 	// 已经和客户端建立好的 链接

@@ -1,9 +1,9 @@
 package tcp_net
 
 import (
-	"TCP-framework_V1.0/tcp_iface"
 	"errors"
 	"fmt"
+	"github.com/Siu-Ming/common-go/tcp_iface"
 	"github.com/sirupsen/logrus"
 	"sync"
 )

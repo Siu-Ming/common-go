@@ -1,8 +1,8 @@
 package tcp_utils
 
 import (
-	"TCP-framework_V1.0/tcp_iface"
 	"encoding/json"
+	"github.com/Siu-Ming/common-go/tcp_iface"
 	"io/ioutil"
 )
 

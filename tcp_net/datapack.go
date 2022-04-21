@@ -1,11 +1,11 @@
 package tcp_net
 
 import (
-	"TCP-framework_V1.0/tcp_iface"
-	"TCP-framework_V1.0/tcp_utils"
 	"bytes"
 	"encoding/binary"
 	"errors"
+	"github.com/Siu-Ming/common-go/tcp_iface"
+	"github.com/Siu-Ming/common-go/tcp_utils"
 )
 
 type DataPack struct {
