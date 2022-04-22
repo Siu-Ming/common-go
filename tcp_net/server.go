@@ -44,7 +44,7 @@ func NewServer(name string) *Server {
 
 // Start 启动服务器
 func (s *Server) Start() {
-	fmt.Printf("服务启动 Name: %s,监听IP:%s,服务端口 %d is starting\n", s.Name, s.IP, s.Port)
+	fmt.Printf("服务启动 Name: %s,监听IP:%s,监听端口:%d,服务启动中.....\n", s.Name, s.IP, s.Port)
 	fmt.Printf("[TCP-framework] 版本:%s,最大连接数:%d,最大数据包长度:%d\n",
 		tcp_utils.GlobalObj.Version,
 		tcp_utils.GlobalObj.MaxConn,
