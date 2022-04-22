@@ -68,9 +68,8 @@ func (s *Server) Start() {
 	}
 
 	// 监听成功
-	fmt.Println("启动 TCP-framework 服务 成功", s.Name, "success Listening...")
+	fmt.Println("启动【TCP-framework】服务成功", s.Name, "success Listening...")
 
-	// TODO server.go应该有一个自定生成ID的方法
 	var cid uint32
 	cid = 0
 
@@ -82,7 +81,7 @@ func (s *Server) Start() {
 			logrus.Error("Accept err", err)
 			continue
 		}
-		// 3.2 TODO Server.Start() 设置服务器最大链接控制，如果超过最大链接，则关闭此新的链接
+		// 3.2 Server.Start() 设置服务器最大链接控制，如果超过最大链接，则关闭此新的链接
 		if s.ConnMgr.Len() >= tcp_utils.GlobalObj.MaxConn {
 			tcpConn.Close()
 			continue
@@ -98,14 +97,14 @@ func (s *Server) Start() {
 }
 
 func (s *Server) Stop() {
-	logrus.Info("[ServerSTOP] TCP-framework server", s.Name)
-	// TODO 将一些服务器的资源，状态或者一些已经开辟的链接信息进行停止或者清除
+	fmt.Println("[ServerSTOP] TCP-framework server", s.Name)
+	//将一些服务器的资源，状态或者一些已经开辟的链接信息进行停止或者清除
 	s.ConnMgr.ClearConn()
 }
 
 func (s *Server) Serve() {
 	s.Start()
-	//TODO 做一些启动服务器之后的业务
+	//做一些启动服务器之后的业务
 
 	// 阻塞 否则主Go退出，listen的go将会退出
 	for true {

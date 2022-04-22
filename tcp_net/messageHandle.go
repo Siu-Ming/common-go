@@ -30,7 +30,7 @@ func NewMessageHandle() *MessageHandle {
 func (m *MessageHandle) DoMsgHandler(request tcp_iface.IRequest) {
 	handler, ok := m.Apis[request.GetMsgId()]
 	if !ok {
-		logrus.Info("api msgId=", request.GetMsgId(), "is not FOUND!")
+		logrus.Error("api msgId=", request.GetMsgId(), "没有创建!")
 	}
 	//执行对应处理方法
 	handler.BeforeHandle(request)
@@ -75,7 +75,7 @@ func (m *MessageHandle) SendMessageToTaskQueue(request tcp_iface.IRequest) {
 
 // StartOneWorker 启动一个Worker工作流程
 func (m *MessageHandle) StartOneWorker(workerID int, taskQueue chan tcp_iface.IRequest) {
-	logrus.Info("Worker ID = ", workerID, "is started.")
+	fmt.Println("Worker ID = ", workerID, "启动")
 	for true {
 		select {
 		case requests := <-taskQueue:

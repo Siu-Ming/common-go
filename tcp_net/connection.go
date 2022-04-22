@@ -171,7 +171,7 @@ func (c *Connection) Start() {
 }
 
 func (c *Connection) Stop() {
-	logrus.Info("Conn Stop()...ConnID=", c.ConnID)
+	fmt.Println("Conn Stop()...ConnID=", c.ConnID)
 	// 1. 如果当前链接已经关闭
 	if c.isClosed == true {
 		return
