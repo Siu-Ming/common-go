@@ -32,7 +32,7 @@ type Server struct {
 
 func NewServer(name string) *Server {
 	server := &Server{
-		Name:          tcp_utils.GlobalObj.Name,
+		Name:          name,
 		IP:            tcp_utils.GlobalObj.Host,
 		Port:          tcp_utils.GlobalObj.Port,
 		IPVersion:     "tcp4",
@@ -44,8 +44,8 @@ func NewServer(name string) *Server {
 
 // Start 启动服务器
 func (s *Server) Start() {
-	logrus.Infof("[Start] Server name: %s,Port %d is starting\n", s.Name, s.IP, s.Port)
-	logrus.Infof("[TCP-framework] Version:%s,MaxConn:%d,MaxPacketSize:%d\n",
+	fmt.Printf("服务启动 Name: %s,监听IP:%s,服务端口 %d is starting\n", s.Name, s.IP, s.Port)
+	fmt.Printf("[TCP-framework] 版本:%s,最大连接数:%d,最大数据包长度:%d\n",
 		tcp_utils.GlobalObj.Version,
 		tcp_utils.GlobalObj.MaxConn,
 		tcp_utils.GlobalObj.MaxPacketSize)
@@ -68,7 +68,7 @@ func (s *Server) Start() {
 	}
 
 	// 监听成功
-	logrus.Info("start TCP-framework server success", s.Name, "success Listening...")
+	fmt.Println("启动 TCP-framework 服务 成功", s.Name, "success Listening...")
 
 	// TODO server.go应该有一个自定生成ID的方法
 	var cid uint32
