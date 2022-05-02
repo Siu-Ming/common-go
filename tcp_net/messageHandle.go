@@ -31,6 +31,7 @@ func (m *MessageHandle) DoMsgHandler(request tcp_iface.IRequest) {
 	handler, ok := m.Apis[request.GetMsgId()]
 	if !ok {
 		logrus.Error("api msgId=", request.GetMsgId(), "没有创建!")
+		return
 	}
 	//执行对应处理方法
 	handler.BeforeHandle(request)
